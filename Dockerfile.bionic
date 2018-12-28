@@ -9,10 +9,11 @@ FROM ${DOCKER_REGISTRY}/${FROM_IMG_REPO}/${FROM_IMG_NAME}:${FROM_IMG_TAG}${DOCKE
 ENV DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true
 RUN apt-get update \
- && apt-get install --no-install-recommends -y git ca-certificates gcc yasm \
+ && apt-get install --no-install-recommends -y git ca-certificates gcc yasm build-essential \
  && rm -rf /var/lib/apt/lists/*
 WORKDIR /usr/local/src
-RUN git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg \
+RUN git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg
+RUN echo \
  && cd ffmpeg \
  && ./configure --enable-nonfree \
  && make -j10 \
