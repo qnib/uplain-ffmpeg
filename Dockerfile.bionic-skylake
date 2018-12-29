@@ -16,7 +16,7 @@ WORKDIR /usr/local/src
 #--disable-avx512\
 RUN git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg \
  && cd ffmpeg \
- && ./configure --enable-nonfree --enable-vaapi \
+ && ./configure --enable-nonfree --enable-vaapi --cpu=skylake \
  && make -j10 \
  && make install \
  && cd .. \
