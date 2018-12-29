@@ -10,11 +10,10 @@ ENV DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true
 RUN apt-get update \
  && apt-get install --no-install-recommends -y git ca-certificates gcc yasm build-essential \
- && apt-get install libva2 libva-dev libass5 \
+ && apt-get install libva2 libva-dev libass-dev \
  && rm -rf /var/lib/apt/lists/*
 WORKDIR /usr/local/src
-RUN git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg
-RUN echo \
+RUN git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg \
  && cd ffmpeg \
  && ./configure --enable-nonfree --enable-vaapi \
  && make -j10 \
