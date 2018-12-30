@@ -15,7 +15,7 @@ WORKDIR /usr/local/src
 RUN git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg
 RUN echo \
  && cd ffmpeg \
- && ./configure --enable-nonfree --cpu=znver1 \
+ && ./configure --enable-nonfree --cpu=znver1 --disable-runtime-cpudetect \
  && make -j10 \
  && make install \
  && cd .. \
