@@ -21,6 +21,4 @@ RUN echo \
  && cd .. \
  && rm -rf ffmpeg
 VOLUME /data/
-ENV CODEC_IN=h264
-ENV CODEC_OUT=h264
 COPY run-bench.sh /usr/local/bin/

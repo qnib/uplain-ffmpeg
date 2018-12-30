@@ -1,4 +1,6 @@
 #!/bin/bash
+: ${FFMPEG_DECODER:=h264}
+: ${FFMPEG_ENCODER:=h264}
 
 function wgetdown() {
   URL="https://docs.google.com/uc?export=download&id=$1"
@@ -19,5 +21,6 @@ if [  ! -f "my-pet-4k.ts" ];then
   Samsung\ Travel\ With\ My\ Pet\ HDR\ UHD\ 4K\ Demo.ts my-pet-4k.ts
   rm -rf down.zip
 fi
-
-time ffmpeg -y -c:v ${CODEC_IN} -vsync 0 -i honey-bees.mp4 -strict -2 -vf scale=1920:1080 -vcodec ${CODEC_OUT} honey-bees_1080.mp4
+echo ">> Use FFMPEG_ENCODER:${FFMPEG_ENCODER} / FFMPEG_DECODER:${FFMPEG_DECODER}"
+set -x
+time ffmpeg -y -c:v ${FFMPEG_ENCODER} -vsync 0 -i honey-bees.mp4 -strict -2 -vcodec ${FFMPEG_DECODER} honey-bees_1080.mp4

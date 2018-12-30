@@ -21,6 +21,6 @@ RUN git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg \
  && cd .. \
  && rm -rf ffmpeg
 VOLUME /data/
-ENV CODEC_IN=h264
-ENV CODEC_OUT=h264_vaapi
+ENV FFMPEG_DECODER=h264
+ENV FFMPEG_ENCODER=h264_vaapi
 COPY run-bench.sh /usr/local/bin/
