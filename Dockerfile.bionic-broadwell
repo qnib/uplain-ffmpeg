@@ -9,7 +9,7 @@ FROM ${DOCKER_REGISTRY}/${FROM_IMG_REPO}/${FROM_IMG_NAME}:${FROM_IMG_TAG}${DOCKE
 ENV DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true
 RUN apt-get update \
- && apt-get install --no-install-recommends -y git ca-certificates gcc yasm build-essential \
+ && apt-get install --no-install-recommends -y git ca-certificates gcc yasm build-essential wget unzip \
  && apt-get install -y libva2 libva-dev libass-dev \
  && rm -rf /var/lib/apt/lists/*
 WORKDIR /usr/local/src
