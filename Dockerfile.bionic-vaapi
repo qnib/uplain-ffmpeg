@@ -5,6 +5,7 @@ ARG FROM_IMG_TAG=bionic-2018-12-23.1
 ARG FROM_IMG_HASH=""
 
 FROM ${DOCKER_REGISTRY}/${FROM_IMG_REPO}/${FROM_IMG_NAME}:${FROM_IMG_TAG}${DOCKER_IMG_HASH}
+LABEL org.qnib.image.node.features=vaapi
 
 ENV DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true
@@ -16,6 +17,11 @@ WORKDIR /usr/local/src
 RUN git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg \
  && cd ffmpeg \
  && ./configure --enable-nonfree --enable-vaapi \
+                 --disable-doc \
+                 --disable-htmlpages \
+                 --disable-manpages \
+                 --disable-podpages \
+                 --disable-txtpages \
  && make -j10 \
  && make install \
  && cd .. \
