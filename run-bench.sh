@@ -9,6 +9,14 @@ function wgetdown() {
   rm -rf /tmp/cookies.txt
 }
 
+if [[ -L /usr/local/cuda ]];then
+  echo ">> CUDA:"
+  ls -l /usr/local/cuda
+else 
+  echo ">> No CUDA found in /usr/local"
+fi
+
+
 echo ">> Use FFMPEG_ENCODER:${FFMPEG_ENCODER} / FFMPEG_DECODER:${FFMPEG_DECODER}"
 cd /data/
 case $1 in
